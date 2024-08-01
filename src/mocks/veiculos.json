@@ -1,0 +1,16 @@
+{
+    "vehicle": [
+        {
+            "cor": "black",
+            "modelo": "BMW",
+            "placa": "NM2024",
+            "car": "/image/vehicle02.png"
+        },
+        {
+            "cor": "White",
+            "modelo": "Mercedes",
+            "placa": "BS2024",
+            "car": "/image/vehicle01.png"
+        }
+    ]
+}

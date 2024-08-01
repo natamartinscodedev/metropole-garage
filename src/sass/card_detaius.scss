@@ -1,0 +1,52 @@
+.container_detaius {
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    div {
+        p:nth-child(3) {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        div {
+            width: 50px;
+            height: 15px;
+            border-radius: 2px;
+        }
+    }
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+}
+
+.container_detaius button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+
+    &:hover {
+        scale: 1.03;
+    }
+}
