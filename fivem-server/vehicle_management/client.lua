@@ -8,21 +8,6 @@ AddEventHandler('vehicle:showPlayerVehicles', function(vehicles)
 end)
 
 -- Função para spawnar o veículo
-RegisterNetEvent('vehicle:spawnVehicle')
-AddEventHandler('vehicle:spawnVehicle', function(vehicle)
-    local model = vehicle.model
-    RequestModel(model)
-    while not HasModelLoaded(model) do
-        Wait(500)
-    end
-    local playerPed = PlayerPedId()
-    local coords = GetEntityCoords(playerPed)
-    local veh = CreateVehicle(model, coords.x, coords.y, coords.z, GetEntityHeading(playerPed), true, false)
-    SetVehicleNumberPlateText(veh, vehicle.plate)
-    -- Adicione outras customizações se necessário
-end)
-
--- Função para spawnar veículo no cliente AMD
 function spawnVehicle(vehicleData)
     local model = GetHashKey(vehicleData.model)
     
@@ -54,4 +39,19 @@ end
 RegisterNetEvent('vehicle:spawnVehicle')
 AddEventHandler('vehicle:spawnVehicle', function(vehicleData)
     spawnVehicle(vehicleData)
+end)
+
+-- Escutar mudanças nos StateBags para atualizações de estado
+AddStateBagChangeHandler('spawned', nil, function(bagName, key, value)
+    local entity = GetEntityFromStateBagName(bagName)
+    if DoesEntityExist(entity) then
+        local stateBag = Entity(entity).state
+        local plate = stateBag.plate
+        local spawned = stateBag.spawned
+
+        if spawned then
+            print('Veículo com placa ' .. plate .. ' foi spawnado.')
+            -- Realizar ações necessárias, como notificações ou logs
+        end
+    end
 end)
